@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Home from "./pages/Home"
+import Game from "./pages/Game"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
 
@@ -14,7 +15,7 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <Home/>
+              <Game/>
             </ProtectedRoute>
           }
         />

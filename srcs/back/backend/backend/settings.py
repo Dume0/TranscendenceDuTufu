@@ -47,6 +47,8 @@ SIMPLE_JWT = {
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +58,10 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'corsheaders',
+    'pong'
 ]
+
+ASGI_APPLICATION = 'backend.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -158,3 +163,37 @@ AUTH_USER_MODEL = 'api.User'
 CORS_ALLOW_ALL_ORIGINS = True
 #pour des raison de securite, a l'avenir, penser a chager ce qu'il y a en bas la
 CORS_ALLOW_CREDENTIALS = True
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'api': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'pong': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        }
+        # Add other apps here if needed
+    },
+}
